@@ -480,6 +480,7 @@ GameObject:
   - component: {fileID: 965039995}
   - component: {fileID: 965039994}
   - component: {fileID: 965039996}
+  - component: {fileID: 965039997}
   m_Layer: 0
   m_Name: Walk_0
   m_TagString: Untagged
@@ -567,7 +568,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 5.2
   m_Material: {fileID: 0}
@@ -638,6 +639,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0bc5650eb9b544e9c7f18d0b8d28ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 300
+--- !u!95 &965039997
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965039991}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96815ba7b0185e441a449895c8398082, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1056964831
 GameObject:
   m_ObjectHideFlags: 0
