@@ -6,6 +6,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public float maxhealth = 100f;
     public float currenthealth;
+
+    [SerializeField] UIManagerScript uiManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,9 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void Die(){
+        uiManager.OnPlayerDie();
         Debug.Log("Player is dead");
+
     }
 
 }
