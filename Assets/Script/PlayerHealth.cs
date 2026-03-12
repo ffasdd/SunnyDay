@@ -8,16 +8,16 @@ public class PlayerHealth : MonoBehaviour
     public float currenthealth;
     public float maxHPBarWidth;
     [SerializeField] UIManagerScript uiManager;
-    [SerializeField] RectTransform hPBar;
+    [SerializeField] RectTransform HPBar;
     
     // Start is called before the first frame update
     void Start()
     {
         currenthealth = maxhealth;
 
-        if (hPBar != null)
+        if (HPBar != null)
         {
-            maxHPBarWidth = hPBar.sizeDelta.x;
+            maxHPBarWidth = HPBar.sizeDelta.x;
         }
     }
 
@@ -35,13 +35,13 @@ public class PlayerHealth : MonoBehaviour
     }
 
     void UpdateHPBar(){
-        if(hPBar == null ) return;
+        if(HPBar == null ) return;
 
         float ratio = currenthealth / maxhealth;
 
-        Vector2 size = hPBar.sizeDelta;
+        Vector2 size = HPBar.sizeDelta;
         size.x = maxHPBarWidth * ratio;
-        hPBar.sizeDelta = size;
+        HPBar.sizeDelta = size;
     }
 
     public void Die(){
