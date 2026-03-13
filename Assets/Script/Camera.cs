@@ -13,8 +13,8 @@ public class Camera : MonoBehaviour
     
     [Header("Camera Clamp")]
     [SerializeField] bool useClamp = true;
-    [SerializeField] float minX = 0f;
-    [SerializeField] float maxX = 80f;
+    [SerializeField] float minX = -5f;
+    [SerializeField] float maxX = 188f;
     void Update()
     {
         Vector3 targetPosition = target.transform.position + targetOffset;

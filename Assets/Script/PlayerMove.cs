@@ -6,6 +6,9 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5;
     [SerializeField] float jumpForce = 5;
+    [Header("Movement Bounds (World X)")]
+    [SerializeField] float minX = -14f;
+    [SerializeField] float maxX = 197f;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     Animator animator;
@@ -49,5 +52,13 @@ public class Player : MonoBehaviour
         Vector2 velocity = rb.velocity;
         velocity.x = inputX * moveSpeed;
         rb.velocity = velocity;
+
+        Vector2 pos = rb.position;
+        float clampedX = Mathf.Clamp(pos.x, minX, maxX);
+        if (!Mathf.Approximately(clampedX, pos.x))
+        {
+            pos.x = clampedX;
+            rb.position = pos;
+        }
     }
 }
