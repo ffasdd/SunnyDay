@@ -1753,7 +1753,7 @@ Transform:
   m_GameObject: {fileID: 236676732}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03875017, y: -0.51, z: 0}
+  m_LocalPosition: {x: 0.03875017, y: -0.359, z: 0}
   m_LocalScale: {x: 2.9364471, y: 0.04115699, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14283,8 +14283,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 100
-  m_PointLightOuterRadius: 100
+  m_PointLightInnerRadius: 500
+  m_PointLightOuterRadius: 500
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -14304,7 +14304,7 @@ Transform:
   m_GameObject: {fileID: 536009342}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 58.7, z: 0}
+  m_LocalPosition: {x: 0.6, y: 463, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14322,10 +14322,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edff1baf085ce1b48a6b45b9ee00cf65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayCount: 100
-  rayDistance: 300
-  startAngle: 165
-  endAngle: 195
+  rayCount: 15
+  rayDistance: 500
+  startAngle: 179
+  endAngle: 181
   damagePerSecond: 1
 --- !u!1 &543831807
 GameObject:
@@ -21232,7 +21232,7 @@ Transform:
   m_GameObject: {fileID: 965039991}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.66, y: -2.49, z: 0}
+  m_LocalPosition: {x: -10, y: -2.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -21325,6 +21325,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 18
+  minX: -13
+  maxX: 200
 --- !u!95 &965039997
 Animator:
   serializedVersion: 5
@@ -22902,9 +22904,9 @@ MonoBehaviour:
   buildingsSprite_three: {fileID: 21300000, guid: b278d4019f412f245b10b6911c53f903, type: 3}
   buildingsSprite_four: {fileID: 21300000, guid: 0e754dee92c855e4da71ffd953224610, type: 3}
   StartPosition: {x: 0, y: 0}
-  MaxBulidingCount: 15
-  rangeMinX: 30
-  rangeMaxX: 80
+  MaxBulidingCount: 20
+  rangeMinX: 0
+  rangeMaxX: 170
   minDistance: 11
 --- !u!4 &1326401193
 Transform:

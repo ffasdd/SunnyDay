@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Light : MonoBehaviour
 {
-    [SerializeField] private int rayCount = 36; // 레이 개수
-    [SerializeField] private float rayDistance = 1000f;
-    [SerializeField] private float startAngle = 0f; // 시작 각도 (도 단위)
-    [SerializeField] private float endAngle = 180f; // 끝 각도 (도 단위) - 반원 기본값
+    [SerializeField] private int rayCount = 30; // 레이 개수
+    [SerializeField] private float rayDistance = 500f;
+    [SerializeField] private float startAngle = 179f; // 시작 각도 (도 단위)
+    [SerializeField] private float endAngle = 181f; // 끝 각도 (도 단위) - 반원 기본값
     
     [SerializeField] private float damagePerSecond = 1f;
 
@@ -33,7 +33,7 @@ public class Light : MonoBehaviour
             float angle = (startAngle + i * angleStep) * Mathf.Deg2Rad;
             Vector2 direction = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
 
-            // Debug.DrawRay(transform.position, direction * rayDistance, Color.red);
+            Debug.DrawRay(transform.position, direction * rayDistance, Color.red);
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, rayDistance);
 

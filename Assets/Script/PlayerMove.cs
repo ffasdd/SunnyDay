@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     [Header("Movement Bounds (World X)")]
     [SerializeField] float minX = -14f;
     [SerializeField] float maxX = 197f;
+
+    [SerializeField] UIManagerScript uiManager;
+
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     Animator animator;
@@ -45,6 +48,10 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("IsJumping", false);
         }
+
+        if(rb.position.x > 192f){
+            Clear();
+        }
     }
 
     void FixedUpdate()
@@ -60,5 +67,9 @@ public class Player : MonoBehaviour
             pos.x = clampedX;
             rb.position = pos;
         }
+    }
+
+    public void Clear(){
+        uiManager.OnPlayerClear();
     }
 }
