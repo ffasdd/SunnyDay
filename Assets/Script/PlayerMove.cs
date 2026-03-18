@@ -6,11 +6,13 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5;
     [SerializeField] float jumpForce = 5;
+    [SerializeField] float goalX = 192;
+
     [Header("Movement Bounds (World X)")]
     [SerializeField] float minX = -14f;
     [SerializeField] float maxX = 197f;
 
-    [SerializeField] UIManagerScript uiManager;
+    [SerializeField] UIManager uiManager;
 
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
@@ -49,7 +51,7 @@ public class Player : MonoBehaviour
             animator.SetBool("IsJumping", false);
         }
 
-        if(rb.position.x > 192f){
+        if(rb.position.x > goalX){
             Clear();
         }
     }

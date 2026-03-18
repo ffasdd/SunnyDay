@@ -7,8 +7,10 @@ public class PlayerHealth : MonoBehaviour
     public float maxhealth = 100f;
     public float currenthealth;
     public float maxHPBarWidth;
-    [SerializeField] UIManagerScript uiManager;
+    
+    [SerializeField] UIManager uiManager;
     [SerializeField] RectTransform HPBar;
+
     
     // Start is called before the first frame update
     void Start()

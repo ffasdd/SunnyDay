@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManagerScript : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] GameObject gameOverUI;  
@@ -47,8 +47,6 @@ public class UIManagerScript : MonoBehaviour
     }
     public void OnPlayerClear()
     {
-        
-            Debug.Log("nya");
         ShowGameClear();
     }
     public void ShowGameClear()
@@ -56,7 +54,7 @@ public class UIManagerScript : MonoBehaviour
         if (isGameClearShown) return;
 
         isGameClearShown = true;
-
+        
         if (gameClearUI != null)
         {
             gameClearUI.SetActive(true);
