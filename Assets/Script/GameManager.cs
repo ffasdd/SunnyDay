@@ -16,7 +16,10 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
+    public void StartGame()
+    {
+        SceneManager.LoadScene("InGame");
+    }
     public void Reload(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
