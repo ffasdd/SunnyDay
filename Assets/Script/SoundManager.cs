@@ -31,7 +31,6 @@ public class SoundManager : MonoBehaviour
     {
         if (scene.name == "InGame")
         {
-            Debug.Log("play");
             PlayBGM(inGameBGM);
         }
     }
