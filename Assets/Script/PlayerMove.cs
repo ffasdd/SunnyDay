@@ -42,7 +42,7 @@ public class PlayerMove : MonoBehaviour
         // 점프 처리 (Update에서 처리하여 정확한 타이밍 보장)
         if (inputY && isGrounded)
         {
-            SoundManager.Instance.JumpSoundPlay();      
+            SoundManager.Instance.PlaySFX("Jump");      
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             animator.SetBool("IsJumping", true);
         }

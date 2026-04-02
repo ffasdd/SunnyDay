@@ -6,14 +6,23 @@ using UnityEngine.SceneManagement;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
+    private bool isSFX = true;
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private AudioClip inGameBGM;
     [SerializeField] private AudioSource JumpSoundSource;
     [SerializeField] private AudioClip JumpSound;
-    private void Awake()
+
+    private Dictionary<string, AudioSource> SFXSources;
+
+    void Awake()
     {
+        SFXSources = new Dictionary<string, AudioSource>()
+        {
+            { "Jump", JumpSoundSource }
+        };
         Instance = this;
     }    
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -54,8 +63,18 @@ public class SoundManager : MonoBehaviour
             PlayBGM(inGameBGM);
         }
     }
-    public void JumpSoundPlay()
+
+    public void SFXSet(bool isOn)
     {
-        JumpSoundSource.PlayOneShot(JumpSound);
+        isSFX = isOn;
+    }
+
+    public void PlaySFX(string type)
+    {
+        if (!isSFX) return;
+        if (SFXSources.TryGetValue(type, out AudioSource source))
+        {
+            source.PlayOneShot(source.clip);
+        }
     }
 }
