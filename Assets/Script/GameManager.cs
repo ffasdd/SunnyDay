@@ -23,4 +23,13 @@ public class GameManager : MonoBehaviour
     public void Reload(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void GamePause()
+    {
+        Time.timeScale = 0;
+    }
+    public void GameResume()
+    {
+        Time.timeScale = 1;
+    }
 }

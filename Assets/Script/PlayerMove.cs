@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5;
     [SerializeField] float jumpForce = 5;
@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
         // 점프 처리 (Update에서 처리하여 정확한 타이밍 보장)
         if (inputY && isGrounded)
         {
+            SoundManager.Instance.JumpSoundPlay();      
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             animator.SetBool("IsJumping", true);
         }
