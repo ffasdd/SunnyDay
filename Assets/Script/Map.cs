@@ -1,46 +1,51 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]public class BuildingData{
+        public GameObject BuildingPrefab;
+        public float spawnY;
+    }
 public class Map : MonoBehaviour
 {
-     [SerializeField]  Sprite buildingsSprite_one;
-     [SerializeField]  Sprite buildingsSprite_two;
-     [SerializeField]  Sprite buildingsSprite_three;
-     [SerializeField]  Sprite buildingsSprite_four;
-    public Vector2 StartPosition = Vector2.zero;
-    public int MaxBulidingCount = 10;
-     public float rangeMinX = -10f;
-    public float rangeMaxX = 90f;
-    public float minDistance = 11f;
-    List<float> buildingXList = new List<float>();
+    [SerializeField] private BuildingData[] buildings;
 
-      void Start()
+    public Vector2 StartPosition = Vector2.zero;
+    public int MaxBulidingCount = 20;
+    public float rangeMinX = 0f;
+    public float rangeMaxX = 170f;
+    public float minDistance = 8f;
+
+    private List<float> buildingXList = new List<float>();
+
+    void Start()
     {
+        if (buildings == null || buildings.Length == 0)
+        {
+            Debug.LogError("buildings가 비어있습니다.");
+            return;
+        }
+
         for (int i = 0; i < MaxBulidingCount; i++)
         {
             float newX;
             if (!TryGetNonOverlappingX(out newX))
             {
-                Debug.Log("더 이상 안 겹치게 넣을 자리 없음. 생성 중단" + i);
+                Debug.Log("더 이상 안 겹치게 넣을 자리 없음. 생성 중단: " + i);
                 break;
             }
 
-            var building = new GameObject($"Building_{i}");
-            building.transform.parent = transform;
+            int prefabIndex = Random.Range(0, buildings.Length);
+            BuildingData selected = buildings[prefabIndex];
 
-            var sr = building.AddComponent<SpriteRenderer>();
-
-            int spriteIndex = Random.Range(0, 4);
-            switch (spriteIndex)
+            if (selected.BuildingPrefab == null)
             {
-                case 0: sr.sprite = buildingsSprite_one; break;
-                case 1: sr.sprite = buildingsSprite_two; break;
-                case 2: sr.sprite = buildingsSprite_three; break;
-                case 3: sr.sprite = buildingsSprite_four; break;
+                Debug.LogWarning($"buildings[{prefabIndex}]가 비어 있습니다.");
+                continue;
             }
 
-            building.transform.position = new Vector3(newX, 2f, 0f);
+             Vector3 spawnPos = new Vector3(newX, selected.spawnY, 0f);
+
+            GameObject building = Instantiate(selected.BuildingPrefab, spawnPos, Quaternion.identity, transform);
+            building.name = $"Building_{i}_{selected.BuildingPrefab.name}";
 
             buildingXList.Add(newX);
         }
@@ -49,6 +54,7 @@ public class Map : MonoBehaviour
     bool TryGetNonOverlappingX(out float resultX)
     {
         const int maxTry = 20;
+
         for (int t = 0; t < maxTry; t++)
         {
             float candidateX = Random.Range(rangeMinX, rangeMaxX);
