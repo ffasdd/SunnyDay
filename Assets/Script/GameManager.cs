@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private float score;
+    public PlayerMove playermove;
+    public PlayerHealth playerhealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +17,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        SetScore();
     }
     public void StartGame()
     {
@@ -32,4 +35,23 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+
+    public void GetScore(){
+        Debug.Log(score);
+        //return score;
+    }
+
+    public void SetScore()
+    {
+        float currentDistance = playermove.distance;
+        float currentHealth = playerhealth.currenthealth;
+
+        bool isGoal = playermove.isGoal;
+
+        score = currentDistance * currentHealth;
+        if(isGoal)
+            score += 500;
+    }
+
+
 }

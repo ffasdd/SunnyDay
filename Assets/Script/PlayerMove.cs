@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -13,18 +14,26 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float maxX = 197f;
 
     [SerializeField] UIManager uiManager;
+    [SerializeField] GameManager gameManager;
+
+    [SerializeField] Text distanceText;
 
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     Animator animator;
     float inputX;
     bool inputY;
+    private float startX;
+    public float distance;
+    public bool isGoal = false;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        startX = rb.position.x;
     }
 
     void Update()
@@ -53,8 +62,13 @@ public class PlayerMove : MonoBehaviour
         }
 
         if(rb.position.x > goalX){
+            isGoal = true;
             Clear();
         }
+
+        distance = Mathf.Round(rb.position.x - startX);
+        distanceText.text = distance.ToString() + "m";
+        
     }
 
     void FixedUpdate()
@@ -70,9 +84,11 @@ public class PlayerMove : MonoBehaviour
             pos.x = clampedX;
             rb.position = pos;
         }
+        
     }
 
     public void Clear(){
+        gameManager.GetScore();
         uiManager.OnPlayerClear();
     }
 }
