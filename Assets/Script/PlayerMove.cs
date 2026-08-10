@@ -44,7 +44,7 @@ public class PlayerMove : MonoBehaviour
         spriteRenderer.flipX = inputX < 0;
 
         // 바닥 감지: 속도가 거의 0이고 아래로 떨어지지 않을 때 땅에 있다고 판단
-        bool isGrounded = Mathf.Abs(rb.velocity.y) < 0.1f;
+        bool isGrounded = Mathf.Abs(rb.linearVelocity.y) < 0.1f;
 
         animator.SetBool("IsWalking", inputX != 0 && isGrounded);
 
@@ -73,9 +73,9 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 velocity = rb.velocity;
+        Vector2 velocity = rb.linearVelocity;
         velocity.x = inputX * moveSpeed;
-        rb.velocity = velocity;
+        rb.linearVelocity = velocity;
 
         Vector2 pos = rb.position;
         float clampedX = Mathf.Clamp(pos.x, minX, maxX);
